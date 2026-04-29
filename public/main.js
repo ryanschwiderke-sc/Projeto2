@@ -11,7 +11,7 @@ function criarTarefa(texto) {
     const btnExcluir = tarefa.querySelector('button')
     spanTitle.textContent = texto
     containerTarefas.appendChild(tarefa)
-    btnExcluir.onclick = () => btnExcluir.closest('.tarefa').remove()
+    btnExcluir.onclick = () => {btnExcluir.closest('.tarefa').remove()}
 }
 
 btnAdicionar.onclick = function () {
