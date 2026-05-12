@@ -1,32 +1,25 @@
 <!DOCTYPE html>
-<html lang='pt-BR'>
-
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>ToDo</title>
-    <link rel='stylesheet' href='main.css'>
-    <script type="module" src="main.js" defer async>
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Lâmpada</title>
 </head>
-
 <body>
-
+    <header>
+        <h1>VANILLA JS</h1>
+    </header>
     <main>
-        <div class="adicionar">
-            <input type="text" placeholder="Digite a tarefa">
-            <button id="adicionar">Adicionar</button>
+        <div>
+            <img src="./img/desligada.jpg" alt="Lâmpada" id='lamp'>
         </div>
-        <div class="tarefas">
-            <template>
-                <div class="tarefa">
-                    <span>Exemplo de tarefa</span>
-                    <button class="excluir">Excluir</button>
-                </div>
-            </template>
+        <div>
+            <button id='turnOn'>Ligar</button>
+            <button id='turnOff'>Desligar</button>
+            <button id="fixBtn" style="display: none;">Consertar</button>
         </div>
     </main>
-
+    <script src="./script.js"></script>
 </body>
-
 </html>
