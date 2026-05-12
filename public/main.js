@@ -1,21 +1,45 @@
-const containerAdicionar = document.querySelector('.adicionar')
-const btnAdicionar = containerAdicionar.querySelector('button')
-const inputAdicionar = containerAdicionar.querySelector('input')
-const containerTarefas = document.querySelector('.tarefas)')
-const templateTarefa = containerTarefas.querySelector('template')
+// atribuição das variaveis de botões e do src da imagem.
+const turnOn = document.getElementById('turnOn');
+const turnOff = document.getElementById('turnOff');
+const lamp = document.getElementById('lamp');
+const fixBtn = document.getElementById('fixBtn');
 
-function criarTarefa(texto) {
-    if (texto.trim() === '') return
-    const tarefa = templateTarefa.content.cloneNode(true)
-    const spanTitle = tarefa.querySelector('span')
-    const btnExcluir = tarefa.querySelector('button')
-    spanTitle.textContent = texto
-    containerTarefas.appendChild(tarefa)
-    btnExcluir.onclick = () => {btnExcluir.closest('.tarefa').remove()}
+
+//função para checar se a lampada esta quebrada
+function isLampBroken() {
+    return lamp.src.indexOf('quebrada') > -1;
 }
 
-btnAdicionar.onclick = function () {
-    const texto = inputAdicionar.value.trim()
-    criarTarefa(texto)
-    inputAdicionar.value = ''
+//função para ligar a lampada caso a funçao nao retorne -1
+function lampOn() {
+    if (!isLampBroken()) {
+        lamp.src = './img/ligada.jpg';
+    }
 }
+
+// função para desligar a lampada
+function lampOff() {
+    if (!isLampBroken()) {
+        lamp.src = './img/desligada.jpg';
+    }
+}
+
+//função para quebrar a lampada
+function lampBroken() {
+    lamp.src = './img/quebrada.jpg';
+    fixBtn.style.display = 'inline-block';
+}
+
+// Conserta a lâmpada e some com o botao de consertar
+function lampFix() {
+        lamp.src = './img/desligada.jpg';     // Volta para a imagem desligada
+        fixBtn.style.display = 'none';        // Esconde o botão de consertar
+    }
+
+// Associa cada função ao seu evento correspondente
+turnOn.addEventListener('click', lampOn);       // Clique em "Ligar" → liga
+turnOff.addEventListener('click', lampOff);     // Clique em "Desligar" → desliga
+lamp.addEventListener('mouseenter',lampOn);     // mouse em cima da lampada liga ela
+lamp.addEventListener('mouseleave',lampOff);    // quando o mouse sai a lampada desliga
+lamp.addEventListener('dblclick', lampBroken);  // Duplo clique na lâmpada → quebra
+fixBtn.addEventListener('click', lampFix);      // Clique em "Consertar" → conserta
